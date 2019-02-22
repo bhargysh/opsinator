@@ -4,7 +4,7 @@ services:
     image: nginx:latest
     volumes:
       - ./custom.conf:/etc/nginx/conf.d/default.conf
-      - ./cat-typing.gif:/app/static/cat-typing.gif
+      - ./static:/app/static
     ports:
       - 8080:80
     depends_on:
