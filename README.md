@@ -15,16 +15,21 @@ Clone this repo:
 Go into the repo:
 `cd opsinator`
 
-*If* you have any current containers on the same ports, the proxy may not work. To prevent that we can do:
+*If* you have any current containers on the same ports, the proxy may not work. To prevent that do:
 `docker-compose down`
 
-Then build the docker container:
+Then build the docker containers:
 `docker-compose up`
 You will see 3 containers spin up, first the app containers and then the nginx container.
 
-Navigate to `localhost:8080` and you should see the NGINX homepage
-You can now navigate to `localhost:8080/static/cat-typing.gif` to see the a fun cat GIF! This is doing the routing to a static page.
+Navigate to `localhost:8080/static/cat-typing.gif` to see the a fun cat GIF! Or `localhost:8080/static/it_crowd_meme.jpg` for any IT crowd fans :P. This is doing the routing to a static page.
 
-Navigate to `localhost:3000` to see a greeting from app1, do a hard refresh `CMD + r` and you should see a greeting from app2. This is the load balancing that the NGINX server is doing.
+If you navigate to `localhost:8080`, you should see a greeting from App 1. Do a hard refresh `CMD + r` and you should see a greeting from App 2. This is the NGINX server doing load balancing using the round robin rule.
+
+When doing the requests above, we can see the logs in the running containers. The logs are custom and can be made more readable using `jq`. Install jq via:
+`brew install jq`
+
+To prettify the logs we can do:
+`echo '{"timestamp":"2019-02-25T04:41:55+00:00","msec":"1551069715.451",...}' | jq`
 
 Voila!
