@@ -1,0 +1,34 @@
+Description: Opsinator
+
+Resources:
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: resi-buy-gradproject-bharg-sg
+      GroupDescription: "Enable SSH access, HTTP, HTTPS and ICMP access"
+      VpcId: "vpc"
+      SecurityGroupIngress:
+        -
+          Description: "Allow access via SSH on port 22 only through REA Melbourne office"
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: "tcp"
+          CidrIp: "0.0.0.0/0" #not the acutal IP address
+        -
+          Description: "Allow everyone access via HTTP on port 80"
+          FromPort: 80
+          ToPort: 80
+          IpProtocol: "tcp"
+          CidrIp: "0.0.0.0/0"
+        -
+          Description: "Allow everyone access via HTTPS on port 443"
+          FromPort: 443
+          ToPort: 443
+          IpProtocol: "tcp"
+          CidrIp: "0.0.0.0/0"
+        -
+          Description: "Allow everyone access via ICMP on port 8"
+          FromPort: 8
+          ToPort: 8
+          IpProtocol: "icmp"
+          CidrIp: "0.0.0.0/0"
