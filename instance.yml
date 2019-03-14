@@ -1,0 +1,22 @@
+Description: Creates EC2 instance in public subnet of VPC with associated Security Groups
+
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: "ap-southeast-2a"
+      ImageId: "ami-0d4315726268ebdd7"
+      KeyName: "grad-project"
+      InstanceType: "t3.small"
+      NetworkInterfaces: 
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          GroupSet: 
+            - "sg-0aa227288ae3a70f1"
+          SubnetId: "subnet-0479cd4ec0bc0afa0"
+      BlockDeviceMappings: 
+        - DeviceName: "/dev/sda1"
+          Ebs: 
+            VolumeType: "gp2"
+            DeleteOnTermination: "true"
+      #       VolumeSize: "8"

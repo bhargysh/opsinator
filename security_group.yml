@@ -6,14 +6,14 @@ Resources:
     Properties:
       GroupName: resi-buy-gradproject-bharg-sg
       GroupDescription: "Enable SSH access, HTTP, HTTPS and ICMP access"
-      VpcId: "vpc"
+      VpcId: "vpc-08bb37391caa055ec"
       SecurityGroupIngress:
         -
           Description: "Allow access via SSH on port 22 only through REA Melbourne office"
           FromPort: 22
           ToPort: 22
           IpProtocol: "tcp"
-          CidrIp: "0.0.0.0/0" #not the acutal IP address
+          CidrIp: 
         -
           Description: "Allow everyone access via HTTP on port 80"
           FromPort: 80
@@ -29,6 +29,6 @@ Resources:
         -
           Description: "Allow everyone access via ICMP on port 8"
           FromPort: 8
-          ToPort: 8
+          ToPort: -1 #allows any icmp request
           IpProtocol: "icmp"
           CidrIp: "0.0.0.0/0"
