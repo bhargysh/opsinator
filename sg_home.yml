@@ -1,0 +1,16 @@
+Description: Opsinator
+
+Resources:
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: resi-buy-gradproject-bharg-home-sg
+      GroupDescription: "Enable SSH access from home"
+      VpcId: "vpc-08bb37391caa055ec"
+      SecurityGroupIngress:
+        -
+          Description: "Allow access via SSH on port 22"
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: "tcp"
+          CidrIp: ""
